@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<spring:bean
+		class="com.bank.repository.bo.AccountTypeCodeBO" 
+		p:value="Saving Account"
+		p:code="sa" />
+	<spring:bean
+		class="com.bank.repository.bo.AccountTypeCodeBO" 
+		p:value="Credit Card"
+		p:code="cc" />
+	<spring:bean
+		class="com.bank.repository.bo.AccountTypeCodeBO"
+		p:value="Deposit" 
+		p:code="fd" />
+		
+</spring:beans>

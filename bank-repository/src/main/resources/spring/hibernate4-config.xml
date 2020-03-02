@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" ref="packagesToScan" />
+		<!-- If Provider is Hibernate and hibernate.properties is configured in 
+			class path then JPA (Hibernate) will load itself the required properties. 
+			Still if they are mentioned here also then it will override So here only 
+			Non Hibernate specific properties are mentioned -->
+		<!--<property name="hibernateProperties"> <props> <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop> 
+			<prop key="hibernate.dialect">${hibernate.dialect}</prop> <prop key="hibernate.show_sql">${hibernate.show_sql}</prop> 
+			<prop key="hibernate.hbm2ddl.import_files">${hibernate.hbm2ddl.import_files}</prop> 
+			<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</prop> 
+			</props> </property> -->
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>
