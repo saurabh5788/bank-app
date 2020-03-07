@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -31,11 +30,5 @@ public class DepositAccountBO extends AccountBO {
 	}
 	public void setRateOfInterest(BigDecimal rateOfInterest) {
 		this.rateOfInterest = rateOfInterest;
-	}
-	@Override
-	@PrePersist
-	void onCreate() {
-		super.onCreate();
-		this.accountType = AccountType.Deposit;
 	}
 }

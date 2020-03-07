@@ -38,14 +38,6 @@ public class CustomerDao {
 		LOGGER.info("Exit persistAccountType!!!");
 	}
 
-	@Transactional(readOnly = true, timeout = 1)
-	public AccountTypeCodeBO findAccountType(String accountTypeCode) {
-		LOGGER.info("Inside findAccountType!!!");
-		AccountTypeCodeBO accountType = manager.find(AccountTypeCodeBO.class, accountTypeCode);
-		LOGGER.info("Exit findAccountType!!!");
-		return accountType;
-	}
-
 	public CustomerBO mergeCustomer(CustomerBO customer) {
 		LOGGER.info("Inside mergeCustomer!!!");
 		EntityUtils.printEntityDetails(manager, customer);
@@ -62,7 +54,23 @@ public class CustomerDao {
 		return customer;
 	}
 
+	@Transactional(readOnly = true, timeout = 10)
 	public List<CustomerBO> getAllCustomersUsingNamedQuery() {
 		return manager.createNamedQuery("Customer.getAllCustomers", CustomerBO.class).getResultList();
 	}
+	
+	@Transactional(readOnly = true, timeout = 1)
+	public AccountTypeCodeBO findAccountType(String accountTypeCode) {
+		LOGGER.info("Inside findAccountType!!!");
+		AccountTypeCodeBO accountType = manager.find(AccountTypeCodeBO.class, accountTypeCode);
+		LOGGER.info("Exit findAccountType!!!");
+		return accountType;
+	}
+
+	@Transactional(readOnly = true, timeout = 10)
+	public List<AccountTypeCodeBO> getAllAccountTypes() {
+		return manager.createNamedQuery("Account.getAllAccountTypes", AccountTypeCodeBO.class)
+				.setHint("org.hibernate.cacheable", true).getResultList();
+	}
+
 }

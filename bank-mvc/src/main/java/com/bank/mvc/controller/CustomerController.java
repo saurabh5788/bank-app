@@ -132,4 +132,12 @@ public class CustomerController {
 		List<CustomerBO> customerList = customerService.getAllCustomersUsingNamedQuery();
 		return "customer";
 	}
+	
+	@RequestMapping(value = "/getAccount", method = RequestMethod.GET)
+	public String getAccountType(Model model) {
+		// Load Customer
+		List<AccountTypeCodeBO> customerList = customerService.getAllAccountTypes();
+		AccountTypeCodeBO accountTypeCodeBO = customerService.getAccountType("cc");
+		return "customer";
+	}
 }

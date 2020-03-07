@@ -2,10 +2,7 @@ package com.bank.repository.bo;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,11 +17,6 @@ import org.hibernate.annotations.NotFoundAction;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "ACCOUNT")
 public abstract class AccountBO extends AbstractBO {
-	@Column(name = "TYPE", insertable = true, length = 20, updatable = false, nullable = false)
-	@Basic(optional = false)
-	@Enumerated(EnumType.STRING)
-	protected AccountType accountType;
-
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,
 			CascadeType.DETACH })
 	@JoinColumn(name = "CUSTOMER_ID", nullable = false, insertable = true, updatable = false)
@@ -48,19 +40,11 @@ public abstract class AccountBO extends AbstractBO {
 		customer.getAccounts().add(this);
 	}
 
-	public AccountType getAccountType() {
-		return accountType;
-	}
-
 	public AccountTypeCodeBO getAccountTypeCode() {
 		return accountTypeCode;
 	}
 
 	public void setAccountTypeCode(AccountTypeCodeBO accountTypeCode) {
 		this.accountTypeCode = accountTypeCode;
-	}
-
-	public static enum AccountType {
-		Saving, CreditCard, Deposit
 	}
 }

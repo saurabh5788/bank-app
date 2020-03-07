@@ -67,4 +67,18 @@ public class CustomerService {
 		LOGGER.info(customerList.toString());
 		return customerList;
 	}
+	
+	@Transactional(readOnly = true, timeout = 10)
+	public List<AccountTypeCodeBO> getAllAccountTypes() {
+		List<AccountTypeCodeBO> customerList = customerDao.getAllAccountTypes();
+		LOGGER.info(customerList.toString());
+		return customerList;
+	}
+	
+	@Transactional(readOnly = true, timeout = 5)
+	public AccountTypeCodeBO getAccountType(String accountTypeCode) {
+		AccountTypeCodeBO accountType = customerDao.findAccountType(accountTypeCode);
+		LOGGER.info(accountType.toString());
+		return accountType;
+	}
 }

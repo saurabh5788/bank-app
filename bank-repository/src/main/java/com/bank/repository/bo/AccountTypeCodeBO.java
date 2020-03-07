@@ -5,6 +5,8 @@ import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -14,6 +16,10 @@ import org.hibernate.annotations.Immutable;
 @Entity
 @Table(name = "ACCOUNT_TYPE_CD")
 @Immutable
+@NamedQueries({
+@NamedQuery(name="Account.getAllAccountTypes",
+    query="SELECT e FROM AccountTypeCodeBO e")          
+})
 @Cacheable // JPA Cacheable Although not mandatory
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE, region = "accounttypecode")
 public class AccountTypeCodeBO {

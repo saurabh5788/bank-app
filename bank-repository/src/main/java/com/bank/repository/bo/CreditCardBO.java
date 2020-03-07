@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import com.bank.repository.bo.AccountBO.AccountType;
-
 @Entity
 @Table(name = "CREDIT_CARD")
 public class CreditCardBO extends AccountBO {
@@ -57,6 +55,5 @@ public class CreditCardBO extends AccountBO {
 	void onCreate() {
 		super.onCreate();
 		this.usedAmount = new BigDecimal(0);
-		this.accountType = AccountType.CreditCard;
 	}
 }
