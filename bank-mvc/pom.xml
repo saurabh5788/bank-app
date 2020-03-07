@@ -44,6 +44,10 @@
 					<groupId>com.bank.service</groupId>
 					<artifactId>bank-service</artifactId>
 				</dependency>
+				<dependency>
+					<groupId>com.bank.ws</groupId>
+					<artifactId>bank-ws-soap</artifactId>
+				</dependency>
 			</dependencies>
 			<build>
 				<finalName>${app.name}</finalName>

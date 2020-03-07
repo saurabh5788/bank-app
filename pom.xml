@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bank.parent</groupId>
 	<artifactId>bank-parent</artifactId>
@@ -11,8 +13,9 @@
 	<modules>
 		<module>bank-repository</module>
 		<module>bank-service</module>
+		<module>bank-ws-soap</module>
 		<module>bank-mvc</module>
-  </modules>
+	</modules>
 
 	<properties>
 		<java.version>1.7</java.version>
@@ -20,6 +23,8 @@
 		<cglib.version>2.2.2</cglib.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<app.name>bank-app</app.name>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<dependencies>
@@ -67,7 +72,18 @@
 				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.ws</groupId>
+				<artifactId>spring-ws-core</artifactId>
+				<version>3.0.8.RELEASE</version>
+			</dependency>
 
+			<!-- Custom Repositories -->
+			<dependency>
+				<groupId>com.bank.ws</groupId>
+				<artifactId>bank-ws-soap</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 			<dependency>
 				<groupId>com.bank.service</groupId>
 				<artifactId>bank-service</artifactId>
