@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan(basePackages = { "com.bank.repository", "com.bank.service", "com.bank.mvc" })
+@ComponentScan(basePackages = { "com.bank.repository", "com.bank.service", "com.bank.mvc", "com.bank.ws" })
 @EnableWebMvc
 @ImportResource({"classpath*:spring/*beans-config.xml"})
 public class MvcConfiguration extends WebMvcConfigurerAdapter {

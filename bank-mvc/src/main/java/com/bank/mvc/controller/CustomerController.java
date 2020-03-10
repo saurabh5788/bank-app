@@ -87,9 +87,9 @@ public class CustomerController {
 		CustomerBO customer = new CustomerBO();
 		customer.setPerson(person);
 
-		AccountTypeCodeBO ccAccountType = new AccountTypeCodeBO("cc", "Credit Card");
-		AccountTypeCodeBO saAccountType = new AccountTypeCodeBO("sa", "Saving Account");
-		AccountTypeCodeBO dpAccountType = new AccountTypeCodeBO("dp", "Deposit");
+		AccountTypeCodeBO ccAccountType = new AccountTypeCodeBO("cc", "Credit Card", "Account for Representing Credit Card Assigned.");
+		AccountTypeCodeBO saAccountType = new AccountTypeCodeBO("sa", "Saving Account", "Normal Saving Accounts");
+		AccountTypeCodeBO dpAccountType = new AccountTypeCodeBO("dp", "Deposit", "Fixed Deposit, PPF, Term Deposit etc.");
 
 		CreditCardBO creditCard1 = new CreditCardBO("4345", new BigDecimal(100000));
 		creditCard1.setAccountTypeCode(ccAccountType);

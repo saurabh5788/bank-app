@@ -1,0 +1,18 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://bank.com/bn/schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AccountTypeDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AccountType" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="sno"/>
+              <xs:element type="xs:string" name="Name"/>
+              <xs:element type="xs:string" name="Description" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="typecode" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
