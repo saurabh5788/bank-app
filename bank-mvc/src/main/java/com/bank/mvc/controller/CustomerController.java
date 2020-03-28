@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,7 @@ import com.bank.service.impl.CustomerService;
 
 @Controller
 @RequestMapping(value = "customer")
+@Validated
 public class CustomerController {
 	private final static Logger LOGGER = LoggerFactory.getLogger(CustomerController.class.getName());
 	private CustomerService customerService;
@@ -38,31 +40,27 @@ public class CustomerController {
 	private Set<AccountTypeCodeBO> accountTypeCodes;
 
 	@Autowired
-	private CustomerController(CustomerService customerService) {
+	public CustomerController(CustomerService customerService) {
 		this.customerService = customerService;
 	}
 
 	@RequestMapping(value = "/adddummy", method = RequestMethod.GET)
 	public String addDummyCustomer() {
 
-		/*int n = 0;
-		if (!CollectionUtils.isEmpty(accountTypeCodes)) {
-			for (AccountTypeCodeBO accountTypeCode : accountTypeCodes) {
-				try {
-					customerService.persistTypeCode(accountTypeCode);
-					n++;
-				} catch (DataIntegrityViolationException dive) {
-					LOGGER.warn("\"{}\" May Present already!!!", accountTypeCode.getCode());
-				}
-			}
-		}
-		LOGGER.debug("No of Account Types Added : {}", n);*/
+		/*
+		 * int n = 0; if (!CollectionUtils.isEmpty(accountTypeCodes)) { for
+		 * (AccountTypeCodeBO accountTypeCode : accountTypeCodes) { try {
+		 * customerService.persistTypeCode(accountTypeCode); n++; } catch
+		 * (DataIntegrityViolationException dive) {
+		 * LOGGER.warn("\"{}\" May Present already!!!", accountTypeCode.getCode()); } }
+		 * } LOGGER.debug("No of Account Types Added : {}", n);
+		 */
 
 		PersonBO person = new PersonBO();
 		Calendar dobCalendar = Calendar.getInstance();
 		dobCalendar.set(1988, 7, 5);
 		Date dateOfBirth = dobCalendar.getTime();
-		person.setDateOfBirth(new java.sql.Date(dateOfBirth.getTime()));		
+		person.setDateOfBirth(new java.sql.Date(dateOfBirth.getTime()));
 		person.setFirstName("Saurabh");
 		person.setLastName("Singh");
 		person.setGender(Gender.Male);
@@ -87,9 +85,11 @@ public class CustomerController {
 		CustomerBO customer = new CustomerBO();
 		customer.setPerson(person);
 
-		AccountTypeCodeBO ccAccountType = new AccountTypeCodeBO("cc", "Credit Card", "Account for Representing Credit Card Assigned.");
+		AccountTypeCodeBO ccAccountType = new AccountTypeCodeBO("cc", "Credit Card",
+				"Account for Representing Credit Card Assigned.");
 		AccountTypeCodeBO saAccountType = new AccountTypeCodeBO("sa", "Saving Account", "Normal Saving Accounts");
-		AccountTypeCodeBO dpAccountType = new AccountTypeCodeBO("dp", "Deposit", "Fixed Deposit, PPF, Term Deposit etc.");
+		AccountTypeCodeBO dpAccountType = new AccountTypeCodeBO("dp", "Deposit",
+				"Fixed Deposit, PPF, Term Deposit etc.");
 
 		CreditCardBO creditCard1 = new CreditCardBO("4345", new BigDecimal(100000));
 		creditCard1.setAccountTypeCode(ccAccountType);
@@ -119,20 +119,20 @@ public class CustomerController {
 
 	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	public String getCustomer(Model model,
-			@Min(value = 1L, message = "The Customer ID must be valid.") @PathVariable("id") Long customerId) {
+			@PathVariable("id") @Min(value = 100L, message = "The Customer ID must be valid.") Long customerId) {
 		// Load Customer
 		CustomerBO customer = customerService.findCustomer(customerId);
 		LOGGER.debug(customer.toString());
 		return "customer";
 	}
-	
+
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public String getCustomer(Model model) {
 		// Load Customer
 		List<CustomerBO> customerList = customerService.getAllCustomersUsingNamedQuery();
 		return "customer";
 	}
-	
+
 	@RequestMapping(value = "/getAccount", method = RequestMethod.GET)
 	public String getAccountType(Model model) {
 		// Load Customer

@@ -53,14 +53,9 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate.validator.version}</version>
+			<version>4.3.1.FINAL</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator-annotation-processor</artifactId>
-			<version>${hibernate.validator.version}</version>
-		</dependency>
-
+		
 		<!-- The spring-orm module provides the Spring integration with Hibernate: -->
 		<dependency>
 			<groupId>org.springframework</groupId>

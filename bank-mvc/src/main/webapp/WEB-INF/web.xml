@@ -27,7 +27,7 @@
 		<url-pattern>/bank-app/*</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
+	<!--<servlet>
       <servlet-name>SpringMessageDispatcherServlet</servlet-name>
       <servlet-class>
          org.springframework.ws.transport.http.MessageDispatcherServlet
@@ -42,7 +42,7 @@
       <servlet-name>SpringMessageDispatcherServlet</servlet-name>
       <url-pattern>/bank-ws/*</url-pattern>
    </servlet-mapping>
-	
+	-->
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>

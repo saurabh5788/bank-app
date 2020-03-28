@@ -13,8 +13,9 @@
 	<modules>
 		<module>bank-repository</module>
 		<module>bank-service</module>
-		<module>bank-ws-soap</module>
+		<!--<module>bank-ws-soap</module>-->
 		<module>bank-mvc</module>
+		<module>bank-soap-ws</module>
 	</modules>
 
 	<properties>
