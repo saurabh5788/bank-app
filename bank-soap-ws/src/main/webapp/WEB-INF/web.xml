@@ -8,15 +8,15 @@
         </listener-class>
     </listener>
     <servlet>
-        <servlet-name>hello</servlet-name>
+        <servlet-name>bank-service</servlet-name>
         <servlet-class>
          com.sun.xml.ws.transport.http.servlet.WSServlet
         </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>hello</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>bank-service</servlet-name>
+        <url-pattern>/bank-service/*</url-pattern>
     </servlet-mapping>
 	<session-config>
 		<session-timeout>30</session-timeout>

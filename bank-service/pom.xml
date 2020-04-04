@@ -15,6 +15,12 @@
 	<packaging>jar</packaging>
 
 	<dependencies>
+		<!-- ActiveMQ -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>5.15.2</version>
+		</dependency>
 		<dependency>
 			<groupId>com.bank.repository</groupId>
 			<artifactId>bank-repository</artifactId>

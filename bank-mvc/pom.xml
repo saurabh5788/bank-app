@@ -44,10 +44,8 @@
 					<groupId>com.bank.service</groupId>
 					<artifactId>bank-service</artifactId>
 				</dependency>
-				<!--<dependency>
-					<groupId>com.bank.ws</groupId>
-					<artifactId>bank-ws-soap</artifactId>
-				</dependency>-->
+				<!--<dependency> <groupId>com.bank.ws</groupId> <artifactId>bank-ws-soap</artifactId> 
+					</dependency> -->
 			</dependencies>
 			<build>
 				<finalName>${app.name}</finalName>
@@ -57,6 +55,12 @@
 						<artifactId>maven-jetty-plugin</artifactId>
 						<version>6.1.10</version>
 						<configuration>
+							<systemProperties>
+								<systemProperty>
+									<name>propertyName</name>
+									<value>propertyValue</value>
+								</systemProperty>								
+							</systemProperties>
 							<scanIntervalSeconds>10</scanIntervalSeconds>
 							<webApp>
 								<contextPath>/${app.name}-context</contextPath>

@@ -94,6 +94,12 @@
 						<artifactId>maven-jetty-plugin</artifactId>
 						<version>6.1.10</version>
 						<configuration>
+							<systemProperties>
+								<systemProperty>
+									<name>propertyName</name>
+									<value>propertyValue</value>
+								</systemProperty>
+							</systemProperties>
 							<scanIntervalSeconds>10</scanIntervalSeconds>
 							<webApp>
 								<contextPath>/${app.name}-context</contextPath>
