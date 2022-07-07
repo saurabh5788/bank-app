@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.3.1.FINAL</version>
+			<version>6.0.23.Final</version>
 		</dependency>
 		
 		<!-- The spring-orm module provides the Spring integration with Hibernate: -->
